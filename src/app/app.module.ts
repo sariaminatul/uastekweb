@@ -7,6 +7,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialDesign } from './material/material.component';
+import { ForgotComponent } from './auth/forgot/forgot.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { MaterialDesign } from './material/material.component';
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    ForgotComponent,
     
   ],
   imports: [
