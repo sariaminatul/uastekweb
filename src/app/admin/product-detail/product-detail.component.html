@@ -25,6 +25,6 @@
  </div>
  <div mat-dialog-actions align="end">
  <button mat-button mat-dialog-close>Batal</button>
- <button mat-flat-button (click)="saveData()">Simpan</button>
+ <button mat-flat-button (click)="saveData()" [disabled]="loading">{{loading ? 'Menyimpan..': 'Simpan'}}</button>
  </div>
  

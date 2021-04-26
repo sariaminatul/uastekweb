@@ -8,6 +8,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialDesign } from './material/material.component';
 import { ForgotComponent } from './auth/forgot/forgot.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ForgotComponent } from './auth/forgot/forgot.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialDesign
+    MaterialDesign,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
