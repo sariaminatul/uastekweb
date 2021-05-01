@@ -36,6 +36,15 @@ export class ProductComponent implements OnInit {
   getBooks()
   {
     this.loading=true;
+    this.api.get('bookswithauth').subscribe(result=>{
+      this.books=result;
+      this.loading=false;
+    },error=>{
+      this.loading=false;
+    })
+    /*
+
+    this.loading=true;
     this.api.get('books').subscribe(result=>{
       this.books=result;
       this.loading=false;
@@ -43,6 +52,9 @@ export class ProductComponent implements OnInit {
       this.loading=false;
       alert('Ada masalah saat pengambilan data. Coba lagi!');
     })
+    */
+
+
   } 
 
   
