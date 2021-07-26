@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "myfood-5831d": {
+      "hosting": {
+        "myAngular": [
+          "myfood-5831d"
+        ]
+      }
+    }
+  }
+}

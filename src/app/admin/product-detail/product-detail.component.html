@@ -3,24 +3,20 @@
  </h3>
  <div mat-dialog-content>
     <mat-form-field appearance="outline" style="width: 100%;">
-        <mat-label>Judul</mat-label>
-        <input matInput [(ngModel)]="data.title">      
+        <mat-label>No</mat-label>
+        <input matInput [(ngModel)]="data.no">      
     </mat-form-field>
     <mat-form-field appearance="outline" style="width: 100%;">
-        <mat-label>Penulis</mat-label>
-        <input matInput [(ngModel)]="data.author" >     
+        <mat-label>Langkah</mat-label>
+        <input matInput [(ngModel)]="data.steps">      
     </mat-form-field>
     <mat-form-field appearance="outline" style="width: 100%;">
-        <mat-label>Penerbit</mat-label>
-        <input matInput [(ngModel)]="data.publisher" >     
+        <mat-label>Resep</mat-label>
+        <input matInput [(ngModel)]="data.recipes" >     
     </mat-form-field>
     <mat-form-field appearance="outline" style="width: 100%;">
-        <mat-label>ISBN</mat-label>
-        <input matInput [(ngModel)]="data.isbn" >     
-    </mat-form-field>
-    <mat-form-field appearance="outline" style="width: 100%;">
-        <mat-label>Harga</mat-label>
-        <input matInput type="number" [(ngModel)]="data.price" >      
+        <mat-label>Makanan</mat-label>
+        <input matInput [(ngModel)]="data.food" >      
     </mat-form-field>
  </div>
  <div mat-dialog-actions align="end">

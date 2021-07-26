@@ -1,4 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -9,39 +11,48 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class ProductDetailComponent implements OnInit {
 
+  
+  userData: any = {};
   constructor(
-    public dialogRef:MatDialogRef<ProductDetailComponent>,
-   @Inject(MAT_DIALOG_DATA) public data: any,
-   public api:ApiService
+    public dialogRef: MatDialogRef<ProductDetailComponent>,
+    @Inject(MAT_DIALOG_DATA) public data:any,
+    public db: AngularFirestore,
+    public auth:AngularFireAuth
   ) { }
 
   ngOnInit(): void {
+    this.auth.user.subscribe(result=>{
+      this.userData=result;
+    });
   }
 
-  loading:boolean | undefined;
+  loading:boolean | undefined
   saveData()
- {
-   this.loading=true;
-   if(this.data.id == undefined)
-   {
-   this.api.post('books',this.data).subscribe(result=>{
-    this.dialogRef.close(result);
-    this.loading=false;
-   },error=>{
-    this.loading=false;
-    alert('Tidak dapat menyimpan data');
-   }); 
- }else{
-  this.api.put('books/'+this.data.id,this.data).subscribe(result=>{
-    this.dialogRef.close(result);
-    this.loading=false;
-  },error=>{
-    this.loading=false;
-    alert('Tidak dapat memperbarui data');
-  });
- 
- }
-
-}
-
+  {
+    this.loading=true;
+    if(this.data.id == undefined)
+    {
+      //simpan ke firebase
+      let doc = new Date().getTime().toString();
+      this.data.uid = this.userData.uid;
+      this.db.collection('books').doc(doc).set(this.data).then(result=>{
+        this.dialogRef.close(this.data);
+        this.loading=false;
+      }).catch(er=>{
+        console.log(er);
+        this.loading=false;
+        alert('Tidak Dapat Menyimpan Data');
+      })
+    
+    }else{
+      this.db.collection('books/').doc(this.data.id).update(this.data).then(result=>{
+        this.dialogRef.close(this.data);
+        this.loading=false;
+      }).catch(er=>{
+        console.log(er);
+        this.loading=false;
+        alert('Tidak Dapat Mengupdate Data');
+      })
+    }
+  }
 }
