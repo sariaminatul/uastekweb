@@ -9,22 +9,13 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class AdminComponent implements OnInit {
 
+  loading:boolean=true;
   constructor(
-    public api:ApiService,
-    public router:Router
+  public router:Router
   ) { }
 
   ngOnInit(): void {
-    this.checkLogin();
-  }
 
-  checkLogin()
-  {
-    this.api.get('bookswithauth/status').subscribe(res=>{
-      return;
-    }, error=>{
-      this.router.navigate(['/login']);
-    })
   }
 
   Logout()
@@ -32,7 +23,8 @@ export class AdminComponent implements OnInit {
     let conf=confirm('Keluar aplikasi?');
     if (conf){
       localStorage.removeItem('appToken');
-      window.location.reload();
+      this.router.navigate(['/login']);
+      
     }
   }
 

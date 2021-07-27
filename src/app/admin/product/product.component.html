@@ -15,18 +15,18 @@
             <thead> 
                 <th></th>               
                 <th>No</th>
-                <th>Langkah</th>
+                <th>Nama Makanan</th>
                 <th>Resep</th>
-                <th>Makanan</th>
+                <th>Kalori</th>
                 <th align="right"></th>
             </thead>
             <tbody>
                 <tr *ngFor="let book of books; let idx=index">
                     <th></th>
                     <td>{{idx+1}}</td>
-                    <td>{{book.steps}}</td>
+                    <td>{{book.foodname}}</td>
                     <td>{{book.recipes}}</td>
-                    <td>{{book.food}}</td>
+                    <td>{{book.calories}}</td>
                     <td align="right">
                         
                         <button mat-button color="primary" (click)="productDetail(book,idx)">Edit</button>
